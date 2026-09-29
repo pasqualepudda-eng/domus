@@ -1,0 +1,327 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   Scale, spacing, motion and breakpoints follow the reference build;
+   colors follow the MetaMask reference palette; type follows revolut.com (Inter + Geist for Aeonik Pro).
+---------------------------------------------------------------- */
+:root {
+  --motion: 1;
+  --motion-speed: 0.55s;
+  --motion-speed-slow: 0.75s;
+  --spring-ease: cubic-bezier(0.4, 1.35, 0.5, 0.97);
+  --spring-ease-duration: calc(var(--motion) * 0.5s);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.58, 0.01, 0.03, 0.99);
+
+  /* MetaMask reference palette */
+  --white: #fff;
+  --paper: #f7f9fc;
+  --gray-light: #e9edf6;
+  --gray: #c8ceda;
+  --gray-mid: #a1a8b7;
+  --gray-dark: #393d46;
+  --ink-light: #242628;
+  --ink-mid: #1b1b1b;
+  --ink: #0a0a0a;
+
+  --blue-light: #cce7ff;
+  --blue: #89b0ff;
+  --orange-light: #ffa680;
+  --orange: #ff5c16;
+  --orange-dark: #661800;
+  --green-light: #e5ffc3;
+  --green: #baf24a;
+  --green-dark: #013330;
+  --purple-light: #eac2ff;
+  --purple: #d075ff;
+  --purple-dark: #3d065f;
+  --pink-light: #fff1eb;
+
+  --value-increase: #457a39;
+  --value-decrease: #e50000;
+
+  --site-container-max-width: 1920px;
+  --page-padding-x: 1.6rem;
+  --header-desktop: 9.8rem;
+  --header-mobile: 8.3rem;
+  --header-height: var(--header-mobile);
+  --columns-count: 8;
+  --grid-gap: 0.8rem;
+
+  /* Display and mono reuse the two families */
+  --font-display: var(--font-heading);
+  --font-mono: var(--font-body);
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --page-padding-x: 2.4rem;
+    --grid-gap: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  :root {
+    --header-height: var(--header-desktop);
+    --columns-count: 16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion: 0;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Fluid root size: 1rem = 10px on phones, scales with the viewport
+   on tablet/desktop and caps at 1920px.
+---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 1.1990407674vw;
+  }
+}
+@media screen and (min-width: 1025px) {
+  html {
+    font-size: 0.6944444444vw;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 13.3333333333px;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: clip;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------
+   Layout
+---------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--site-container-max-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--page-padding-x);
+  padding-left: var(--page-padding-x);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+  gap: var(--grid-gap);
+}
+
+.desktop-only {
+  display: none !important;
+}
+@media screen and (min-width: 1025px) {
+  .desktop-only {
+    display: revert !important;
+  }
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Typography
+---------------------------------------------------------------- */
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.font-heading {
+  font-family: var(--font-heading), sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.type-display-xxl {
+  font-size: 6.4rem;
+  line-height: 100%;
+  letter-spacing: -0.06rem;
+}
+.type-display-xl {
+  font-size: 5.6rem;
+  line-height: 100%;
+  letter-spacing: -0.048rem;
+}
+.type-display-l {
+  font-size: 4.8rem;
+  line-height: 100%;
+}
+.type-display-ml {
+  font-size: 4rem;
+  line-height: 100%;
+}
+.type-display-m {
+  font-size: 3.2rem;
+  line-height: 100%;
+}
+.type-display-s {
+  font-size: 2.4rem;
+  line-height: 100%;
+}
+.type-heading-m {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+}
+.type-heading-s {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 115%;
+  letter-spacing: -0.01em;
+}
+.type-heading-xs {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 120%;
+}
+.type-paragraph-l {
+  font-size: 2rem;
+  line-height: 140%;
+}
+.type-paragraph-m {
+  font-size: 1.6rem;
+  line-height: 145%;
+}
+.type-eyebrow {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1025px) {
+  .type-display-xxl {
+    font-size: 16rem;
+    letter-spacing: -0.096rem;
+  }
+  .type-display-xl {
+    font-size: 12.8rem;
+    letter-spacing: -0.076rem;
+  }
+  .type-display-l {
+    font-size: 10.4rem;
+  }
+  .type-display-ml {
+    font-size: 8rem;
+  }
+  .type-display-m {
+    font-size: 6.4rem;
+  }
+  .type-display-s {
+    font-size: 5.6rem;
+  }
+  .type-heading-m {
+    font-size: 4rem;
+  }
+  .type-heading-s {
+    font-size: 2.8rem;
+  }
+  .type-heading-xs {
+    font-size: 2rem;
+  }
+  .type-paragraph-l {
+    font-size: 2.2rem;
+  }
+  .type-paragraph-m {
+    font-size: 1.8rem;
+  }
+  .type-eyebrow {
+    font-size: 1.3rem;
+  }
+}
+
+/* Sections */
+.page > section {
+  position: relative;
+}

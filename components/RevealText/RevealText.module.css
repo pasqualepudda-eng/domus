@@ -1,0 +1,9 @@
+.word {
+  display: inline;
+}
+
+/* While scrubbing: an outline of the text colour that fills in as --fill goes 0 → 1. */
+.reveal[data-ink] .word {
+  color: color-mix(in srgb, var(--ink) calc(var(--fill, 1) * 100%), transparent);
+  -webkit-text-stroke: calc((1 - var(--fill, 1)) * 0.022em) var(--ink);
+}

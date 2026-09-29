@@ -1,0 +1,174 @@
+.button {
+  --spring-duration: calc(var(--motion) * var(--motion-speed-slow));
+  --bg-duration: calc(var(--motion) * var(--motion-speed));
+  --button-bg: var(--ink);
+  --button-bg-hover: var(--ink);
+  --button-text: var(--white);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+  height: 4.8rem;
+  padding: 0 2.4rem;
+  border-radius: 10rem;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--button-text);
+  white-space: nowrap;
+  -webkit-mask-image: radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+/* Background layer that springs on hover */
+.button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--button-bg);
+  transition:
+    transform var(--bg-duration) var(--spring-ease),
+    background-color var(--bg-duration) ease;
+}
+
+.button:hover::before {
+  transform: scale(1.04);
+  background: var(--button-bg-hover);
+}
+
+.button:active::before {
+  transform: scale(0.97);
+}
+
+.primary {
+  --button-bg: var(--ink);
+  --button-bg-hover: var(--blue);
+  --button-text: var(--white);
+}
+
+.secondary {
+  --button-bg: var(--white);
+  --button-bg-hover: var(--gray-light);
+  --button-text: var(--ink);
+}
+
+.light {
+  --button-bg: var(--green-light);
+  --button-bg-hover: var(--white);
+  --button-text: var(--green-dark);
+}
+
+.tertiary {
+  --button-bg: transparent;
+  --button-bg-hover: transparent;
+  --button-text: var(--ink);
+  padding: 0;
+  height: auto;
+}
+
+.tertiary::before {
+  display: none;
+}
+
+.large {
+  height: 6.4rem;
+  padding: 0 3.2rem;
+  font-size: 1.8rem;
+}
+
+@media screen and (min-width: 1025px) {
+  .button {
+    height: 5.2rem;
+    padding: 0 2.8rem;
+  }
+  .large {
+    height: 7.2rem;
+    padding: 0 4rem;
+    font-size: 2rem;
+  }
+  .tertiary {
+    height: auto;
+    padding: 0;
+  }
+}
+
+.noLabel {
+  width: 4.8rem;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Label rolls up and a copy rolls in from below */
+.label {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0.2em 0;
+}
+
+.label > span,
+.label::after {
+  display: block;
+  transition: transform var(--spring-duration) var(--spring-ease);
+}
+
+.label::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  transform: translateY(160%);
+}
+
+.button:hover .label > span {
+  transform: translateY(-160%);
+}
+
+.button:hover .label::after {
+  transform: translateY(0);
+}
+
+/* Icon exits and its twin enters */
+.iconWrap {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.icon,
+.iconHover {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transition: transform var(--spring-duration) var(--spring-ease);
+}
+
+.iconHover {
+  position: absolute;
+  transform: translate(-290%, 290%);
+}
+
+.button:hover .icon {
+  transform: translate(290%, -290%);
+}
+
+.button:hover .iconHover {
+  transform: translate(0, 0);
+}
+
+.iconRight .iconHover {
+  transform: translateX(-290%);
+}
+
+.iconRight:hover .icon {
+  transform: translateX(290%);
+}

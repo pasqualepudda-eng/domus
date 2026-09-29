@@ -1,0 +1,66 @@
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  min-height: 22rem;
+  padding: 2.4rem;
+  border-radius: 2.4rem;
+  color: var(--fg);
+  background: var(--bg);
+  /* Hover uses the individual translate/rotate properties: `transform` belongs to the scroll animation. */
+  transition:
+    translate var(--spring-ease-duration) var(--spring-ease),
+    rotate var(--spring-ease-duration) var(--spring-ease);
+}
+
+.card:hover {
+  translate: 0 -0.6rem;
+  rotate: -1deg;
+}
+
+.index {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.icon {
+  width: 5.6rem;
+  height: 5.6rem;
+  transition: transform calc(var(--motion) * 0.7s) var(--spring-ease);
+}
+
+.card:hover .icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    min-height: 28rem;
+    padding: 3.2rem;
+    border-radius: 3.2rem;
+  }
+}

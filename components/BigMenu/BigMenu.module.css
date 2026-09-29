@@ -1,0 +1,436 @@
+.menu {
+  pointer-events: auto;
+  position: fixed;
+  z-index: 15;
+  inset: 0;
+  overflow-y: auto;
+  color: var(--green-light);
+  visibility: hidden;
+  overscroll-behavior: contain;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background: var(--green-dark);
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  min-height: 100%;
+  padding-top: calc(var(--header-mobile) + 2.4rem);
+  padding-bottom: 3.2rem;
+}
+
+/* ------------------------------------------------------------------
+   Big links
+------------------------------------------------------------------- */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 1.2rem;
+  border-bottom: 1px solid rgba(229, 255, 195, 0.14);
+}
+
+.num {
+  align-self: start;
+  padding-top: 1.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.bigLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  min-width: 0;
+  padding: 1rem 0;
+}
+
+/* The animated text never takes the pointer: hover/click hit areas stay
+   on the static link box, otherwise the rolling text slides under the
+   cursor and hover flips between rows every frame. */
+.mask,
+.here,
+.arrow {
+  pointer-events: none;
+}
+
+.mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.08em;
+}
+
+.line {
+  display: block;
+  font-size: 3.8rem;
+  line-height: 1;
+  will-change: transform;
+}
+
+/* Text rolls up to a copy in the accent colour */
+.roll {
+  position: relative;
+  display: inline-block;
+  transition: transform calc(var(--motion) * 0.6s) var(--ease-in-out);
+}
+
+.roll::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 110%;
+  left: 0;
+  color: var(--accent);
+}
+
+.here {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.4rem rgba(255, 255, 255, 0.12);
+}
+
+.arrow {
+  display: none;
+}
+
+.expand {
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  color: inherit;
+  background: rgba(229, 255, 195, 0.08);
+  transition:
+    transform var(--spring-ease-duration) var(--spring-ease),
+    background-color 0.2s ease;
+}
+
+.expand svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.rowOpen .expand {
+  color: var(--green-dark);
+  background: var(--accent);
+  transform: rotate(180deg);
+}
+
+.sub {
+  display: grid;
+  grid-column: 2 / -1;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows calc(var(--motion) * 0.45s) var(--ease-in-out);
+}
+
+.rowOpen .sub {
+  grid-template-rows: 1fr;
+}
+
+.sub ul {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.sub a {
+  display: block;
+  padding: 0.6rem 0;
+  font-size: 1.6rem;
+  opacity: 0.8;
+}
+
+.sub li:last-child a {
+  padding-bottom: 1.8rem;
+}
+
+/* ------------------------------------------------------------------
+   Preview card (desktop)
+------------------------------------------------------------------- */
+.preview {
+  display: none;
+}
+
+/* ------------------------------------------------------------------
+   Bottom strip
+------------------------------------------------------------------- */
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-self: end;
+  padding-top: 2.4rem;
+  border-top: 1px solid rgba(229, 255, 195, 0.14);
+}
+
+.tagline {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+  font-size: 1.4rem;
+}
+
+.legal a,
+.legal button {
+  font-size: inherit;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.legal a:hover,
+.legal button:hover {
+  opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .line {
+    font-size: 6.4rem;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .inner {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 1.6rem;
+    row-gap: 3.2rem;
+    height: 100%;
+    min-height: 0;
+    padding-top: calc(var(--header-desktop) + 2.4rem);
+  }
+
+  .primary {
+    display: flex;
+    align-items: center;
+    grid-column: 1 / span 10;
+  }
+
+  .list {
+    width: 100%;
+  }
+
+  .row {
+    grid-template-columns: 6rem 1fr;
+    border-bottom: 0;
+  }
+
+  .num {
+    padding-top: 2.2rem;
+    font-size: 1.4rem;
+  }
+
+  .bigLink {
+    padding: 0.2rem 0;
+  }
+
+  .line {
+    font-size: min(8.8rem, 9.5vh);
+  }
+
+  /* GSAP animates .line on open, so hover effects live on .mask */
+  .mask {
+    transition:
+      opacity calc(var(--motion) * 0.4s) ease,
+      transform calc(var(--motion) * 0.6s) var(--spring-ease);
+  }
+
+  /* Dim siblings while one link is hovered */
+  .list:hover .mask {
+    opacity: 0.28;
+  }
+
+  .list:hover .rowHover .mask {
+    opacity: 1;
+    transform: translateX(2.4rem);
+  }
+
+  .rowHover .roll {
+    transform: translateY(-110%);
+  }
+
+  .arrow {
+    display: block;
+    flex-shrink: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    color: var(--accent);
+    opacity: 0;
+    transform: translate(-2rem, 2rem) scale(0.6);
+    transition:
+      opacity 0.3s ease,
+      transform calc(var(--motion) * 0.6s) var(--spring-ease);
+  }
+
+  .list:hover .rowHover .arrow {
+    opacity: 1;
+    transform: translate(2.4rem, 0) scale(1);
+  }
+
+  .expand,
+  .sub {
+    display: none;
+  }
+
+  .preview {
+    display: flex;
+    align-items: center;
+    grid-column: 12 / span 5;
+    min-height: 0;
+  }
+
+  .previewInner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    min-height: min(48rem, 100%);
+    max-height: 100%;
+    padding: 4rem;
+    border-radius: 3.2rem;
+    color: var(--fg);
+    background: var(--bg);
+    animation: previewIn calc(var(--motion) * 0.6s) var(--ease-out-expo);
+  }
+
+  .previewTitle {
+    position: relative;
+    max-width: 36rem;
+  }
+
+  .previewInner > p:first-of-type {
+    position: relative;
+    max-width: calc(100% - 6rem);
+  }
+
+  .previewLinks {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .previewLinks li {
+    animation: linkIn calc(var(--motion) * 0.6s) var(--ease-out-expo) both;
+    animation-delay: calc(var(--motion) * (0.1s + var(--i) * 0.05s));
+  }
+
+  .previewLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 1.2rem 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+    transition: padding var(--spring-ease-duration) var(--spring-ease);
+  }
+
+  .previewLinks a:hover {
+    padding-left: 1rem;
+  }
+
+  .previewLinks svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .shapes i {
+    position: absolute;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--fg) 12%, transparent);
+    animation: float 6s ease-in-out infinite alternate;
+  }
+
+  .shapes i:nth-child(1) {
+    top: -8rem;
+    right: -6rem;
+    width: 24rem;
+    height: 24rem;
+  }
+
+  .shapes i:nth-child(2) {
+    top: 10rem;
+    right: 6rem;
+    width: 8rem;
+    height: 8rem;
+    background: color-mix(in srgb, var(--fg) 22%, transparent);
+    animation-duration: 4s;
+  }
+
+  .shapes i:nth-child(3) {
+    top: auto;
+    right: 4rem;
+    bottom: calc(100% - 8rem);
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 0.8rem;
+    background: var(--fg);
+    animation-duration: 5s;
+  }
+
+  .bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+  }
+
+  .legal {
+    margin-left: auto;
+  }
+}
+
+@keyframes previewIn {
+  from {
+    opacity: 0.4;
+    transform: scale(0.96) rotate(-1.5deg);
+  }
+}
+
+@keyframes linkIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+}
+
+@keyframes float {
+  to {
+    transform: translate(-1.6rem, 1.6rem) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shapes i {
+    animation: none;
+  }
+}

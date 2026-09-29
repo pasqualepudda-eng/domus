@@ -1,0 +1,43 @@
+.significato {
+  padding-top: 12rem;
+  background: var(--paper);
+}
+
+.significato > :global(.container) {
+  margin-bottom: 8rem;
+}
+
+.missione {
+  padding: 14rem 0 12rem;
+  background: var(--paper);
+}
+
+.missioneGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.bigTitle {
+  max-width: 130rem;
+}
+
+.missioneText {
+  display: grid;
+  gap: 2rem;
+  max-width: 90rem;
+  color: var(--gray-dark);
+}
+
+.listTitle {
+  margin-top: 4rem;
+}
+
+@media screen and (min-width: 1025px) {
+  .missioneText {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-left: auto;
+    max-width: 100rem;
+  }
+}

@@ -1,0 +1,16 @@
+.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.heading {
+  text-align: center;
+  transform: scale(0.9);
+  will-change: transform, filter;
+}
+
+.heading i {
+  font-style: normal;
+}

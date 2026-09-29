@@ -1,0 +1,200 @@
+.section {
+  padding: 8rem 0;
+  background: var(--paper);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.text p {
+  max-width: 52rem;
+  color: var(--gray-dark);
+}
+
+.mediaWrap {
+  width: 100%;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 2.4rem;
+  background: var(--media-bg);
+}
+
+.mock {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 64%;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: var(--white);
+  box-shadow: 0 3rem 6rem -2rem rgba(10, 10, 12, 0.25);
+}
+
+.mockRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.mockRow > span:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.mockRow b,
+.mockRate b {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.mockRate b {
+  font-size: 2.8rem;
+  letter-spacing: -0.02em;
+}
+
+.mockRow small,
+.mockRate small {
+  font-size: 1.2rem;
+  color: var(--gray-mid);
+}
+
+.mockRate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.up {
+  color: var(--value-increase) !important;
+}
+
+.mockDot {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.toggle {
+  position: relative;
+  width: 4.4rem;
+  height: 2.6rem;
+  border-radius: 2rem;
+  background: var(--ink);
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.mockBar {
+  height: 0.8rem;
+  border-radius: 1rem;
+  background: var(--gray-light);
+}
+
+.mockBar span {
+  display: block;
+  width: 62%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+@media screen and (min-width: 1025px) {
+  .section {
+    padding: 12rem 0;
+  }
+
+  .row {
+    grid-template-columns: repeat(16, 1fr);
+    gap: 1.6rem;
+    padding: 6rem 0;
+  }
+
+  .text {
+    grid-column: 2 / span 5;
+    grid-row: 1;
+  }
+
+  .mediaWrap {
+    grid-column: 9 / span 7;
+    grid-row: 1;
+  }
+
+  .mirrored .text {
+    grid-column: 11 / span 5;
+  }
+
+  .mirrored .mediaWrap {
+    grid-column: 2 / span 7;
+  }
+
+  .media {
+    aspect-ratio: 7 / 6;
+    border-radius: 3.2rem;
+  }
+
+  .mock {
+    width: 56%;
+    padding: 2.8rem;
+  }
+}
+
+.mockTitle {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chips li {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10rem;
+  font-size: 1.3rem;
+  background: var(--gray-light);
+}
+
+.chips li:nth-child(3n + 1) {
+  background: var(--accent);
+}

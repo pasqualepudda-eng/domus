@@ -1,0 +1,49 @@
+.section {
+  padding: 10rem 0;
+  background: var(--paper);
+}
+
+.tinted {
+  background: var(--purple-light);
+}
+
+.intro {
+  margin-bottom: 4rem;
+}
+
+.capTitle {
+  max-width: 80rem;
+  margin: 10rem 0 4rem;
+}
+
+.split {
+  display: grid;
+  gap: 2.4rem;
+  margin-bottom: 6rem;
+}
+
+.splitText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  color: var(--gray-dark);
+}
+
+.hint {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+}
+
+@media screen and (min-width: 1025px) {
+  .section {
+    padding: 16rem 0;
+  }
+
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: end;
+    margin-bottom: 8rem;
+  }
+}

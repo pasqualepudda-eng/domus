@@ -1,0 +1,219 @@
+.bentoGrid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+
+/* Below desktop: horizontal scroll-snap carousel */
+@media screen and (max-width: 1024px) {
+  .content {
+    display: flex;
+    gap: 5vw;
+    padding: 0 10vw;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .column {
+    display: contents;
+  }
+
+  .centerSlot {
+    display: none;
+  }
+
+  .columnRight > :last-child {
+    margin-right: 10vw;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .content > :first-child > :first-child {
+    margin-left: 12vw;
+  }
+}
+
+/* Desktop: 16-col grid, two columns around the phone slot */
+@media screen and (min-width: 1025px) {
+  .content {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 1.6rem;
+    height: var(--bento-height, 60rem);
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    height: 100%;
+  }
+
+  .columnLeft {
+    grid-column: 2 / span 4;
+  }
+
+  .centerSlot {
+    grid-column: 7 / span 4;
+  }
+
+  .columnRight {
+    grid-column: 12 / span 4;
+  }
+}
+
+.card {
+  --ease: var(--spring-ease);
+  --duration: var(--spring-ease-duration);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: min(80vw, 80vh);
+  aspect-ratio: 342 / 440;
+  padding: 3.2rem;
+  border-radius: 2.4rem;
+  color: var(--card-fg);
+  text-align: left;
+  background: var(--card-bg);
+  scroll-snap-align: center;
+  transition: transform var(--duration) var(--ease);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    width: 55vw;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .card {
+    flex: 1;
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 0;
+    border-radius: 3.2rem;
+  }
+
+  .card:hover {
+    transform: scale(0.98);
+  }
+}
+
+.heading,
+.subHeading {
+  position: relative;
+  z-index: 2;
+  max-width: 26rem;
+  transition:
+    opacity calc(var(--motion) * 0.25s) ease-in-out,
+    transform calc(var(--motion) * 0.5s) var(--spring-ease);
+}
+
+.subHeading {
+  position: absolute;
+  top: 3.2rem;
+  left: 3.2rem;
+  right: 3.2rem;
+  max-width: none;
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.active .heading {
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+
+.active .subHeading {
+  opacity: 1;
+  transform: none;
+}
+
+.shape {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  height: 58%;
+  padding: 0 1.6rem 1.6rem;
+  transition: transform calc(var(--motion) * 0.6s) var(--spring-ease);
+}
+
+.shape svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.active .shape {
+  transform: scale(0.9) translateY(4%);
+}
+
+.float1,
+.float2,
+.float3 {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform calc(var(--motion) * 0.7s) var(--spring-ease);
+}
+
+.active .float1 {
+  transform: translate(-4%, -6%) rotate(-6deg);
+}
+
+.active .float2 {
+  transform: translate(6%, 4%) rotate(8deg);
+}
+
+.active .float3 {
+  transform: translateY(-18%) scale(1.15);
+}
+
+.pagination {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+
+@media screen and (min-width: 1025px) {
+  .pagination {
+    display: none;
+  }
+}
+
+.dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 1rem;
+  background: currentColor;
+  opacity: 0.3;
+  transition:
+    width var(--spring-ease-duration) var(--spring-ease),
+    opacity 0.2s ease;
+}
+
+.dotActive {
+  width: 2.4rem;
+  opacity: 1;
+}

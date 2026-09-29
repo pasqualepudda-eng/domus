@@ -1,0 +1,61 @@
+.scroll {
+  position: relative;
+  height: 260vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  background: var(--paper);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40vmax;
+  height: 40vmax;
+  margin: -20vmax 0 0 -20vmax;
+  border: 2px solid var(--purple);
+  border-radius: 50%;
+}
+
+.ring2 {
+  width: 24vmax;
+  height: 24vmax;
+  margin: -12vmax 0 0 -12vmax;
+  border-color: var(--orange);
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--purple-light);
+  background: var(--purple-dark);
+  clip-path: circle(0% at 50% 50%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  max-width: 110rem;
+  text-align: center;
+}
+
+.content p:not(:first-child) {
+  max-width: 76rem;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+.title {
+  color: var(--white);
+}

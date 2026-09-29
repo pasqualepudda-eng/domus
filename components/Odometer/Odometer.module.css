@@ -1,0 +1,41 @@
+.odometer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.digits {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+/* One digit window, exactly one cell tall and as wide as the digit it lands on
+   (the invisible sizer), so the resting number sets like plain text. */
+.col {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.sizer {
+  display: block;
+  visibility: hidden;
+}
+
+.strip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  translate: -50% 0;
+}
+
+.strip > span,
+.sym {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <!-- Oro metallico 3D -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7E7C3"/>
+      <stop offset="25%" stop-color="#D8B87A"/>
+      <stop offset="50%" stop-color="#C8A66A"/>
+      <stop offset="75%" stop-color="#A67C3A"/>
+      <stop offset="100%" stop-color="#E8D5B0"/>
+    </linearGradient>
+    <!-- Oro scuro per ombra -->
+    <linearGradient id="goldDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8C6A3A"/>
+      <stop offset="100%" stop-color="#3D2E1A"/>
+    </linearGradient>
+    <!-- Blu badge -->
+    <linearGradient id="blueBadge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E4A70"/>
+      <stop offset="100%" stop-color="#0F253E"/>
+    </linearGradient>
+    <!-- Arancio 3D -->
+    <linearGradient id="orange3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFA02E"/>
+      <stop offset="50%" stop-color="#E67E17"/>
+      <stop offset="100%" stop-color="#B85E0C"/>
+    </linearGradient>
+    <!-- Ombra rilievo -->
+    <!-- Rilievo: oro + riflesso di luce + ombra.
+         (Il filtro originale restituiva solo il riflesso e cancellava il colore oro.) -->
+    <filter id="emboss" x="-15%" y="-15%" width="130%" height="130%">
+      <feSpecularLighting in="SourceAlpha" surfaceScale="4" specularConstant="0.9" specularExponent="20" lighting-color="#fff" result="spec">
+        <fePointLight x="200" y="100" z="200"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn"/>
+      <feMerge result="lit">
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="specIn"/>
+      </feMerge>
+      <feDropShadow in="lit" dx="2" dy="3" stdDeviation="2" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Sfondo blu esagono -->
+  <path d="M 400 40 L 710 210 L 710 590 L 400 760 L 90 590 L 90 210 Z" fill="url(#blueBadge)" stroke="#0A1A2E" stroke-width="2"/>
+
+  <!-- Bordo oro esterno -->
+  <path d="M 400 90 L 650 225 L 650 575 L 400 710 L 150 575 L 150 225 Z" fill="none" stroke="url(#gold)" stroke-width="14" stroke-linejoin="round" filter="url(#emboss)"/>
+  <path d="M 400 90 L 650 225 L 650 575 L 400 710 L 150 575 L 150 225 Z" fill="none" stroke="#8C6A3A" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Ingranaggio alto -->
+  <g transform="translate(400, 250)">
+    <circle r="28" fill="url(#gold)" filter="url(#emboss)"/>
+    <circle r="15" fill="#112F4B"/>
+    <!-- denti semplificati -->
+    <g fill="url(#gold)">
+      <rect x="-4" y="-36" width="8" height="10" rx="2"/><rect x="-4" y="26" width="8" height="10" rx="2"/>
+      <rect x="-36" y="-4" width="10" height="8" rx="2"/><rect x="26" y="-4" width="10" height="8" rx="2"/>
+    </g>
+  </g>
+
+  <!-- Ingranaggio basso con serratura -->
+  <g transform="translate(400, 620)">
+    <circle r="34" fill="url(#gold)" filter="url(#emboss)"/>
+    <circle r="20" fill="#112F4B" stroke="url(#gold)" stroke-width="2"/>
+    <path d="M -8 -5 A 8 8 0 0 1 8 -5 L 5 10 L -5 10 Z" fill="#E8D5B0"/>
+  </g>
+
+  <!-- Testo ARKA 3D -->
+  <g font-family="Arial Black, sans-serif" font-weight="900" text-anchor="middle">
+    <!-- Ombra 3D -->
+    <text x="404" y="464" font-size="92" fill="#8C4A08" letter-spacing="2">ARKA</text>
+    <!-- Testo principale -->
+    <text x="400" y="460" font-size="92" fill="url(#orange3D)" letter-spacing="2" filter="url(#emboss)">ARKA</text>
+  </g>
+
+  <!-- DOMUS GEIE -->
+  <text x="400" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="600" fill="url(#orange3D)" text-anchor="middle" letter-spacing="4">DOMUS GEIE</text>
+
+  <!-- Bulloni laterali -->
+  <rect x="10" y="370" width="80" height="60" rx="6" fill="url(#gold)" filter="url(#emboss)"/>
+  <rect x="710" y="370" width="80" height="60" rx="6" fill="url(#gold)" filter="url(#emboss)"/>
+</svg>

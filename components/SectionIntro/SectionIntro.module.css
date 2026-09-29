@@ -1,0 +1,17 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 88rem;
+}
+
+.center {
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  max-width: 60rem;
+  opacity: 0.75;
+}

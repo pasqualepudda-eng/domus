@@ -1,0 +1,186 @@
+.wrap {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.copy > p:nth-of-type(1) {
+  color: var(--gray-dark);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  font-size: 1.6rem;
+}
+
+.count {
+  font-size: 9.6rem;
+  line-height: 0.9;
+  color: var(--orange);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-size: 1.4rem;
+  color: var(--gray-dark);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.legend i {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--green-dark);
+}
+
+.legend .legendHub {
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgba(255, 92, 22, 0.25);
+}
+
+.map {
+  position: relative;
+  padding: 1.6rem;
+  border-radius: 3.2rem;
+  background: var(--green-light);
+}
+
+.map svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gridDot {
+  fill: rgba(1, 51, 48, 0.12);
+}
+
+.link {
+  fill: none;
+  stroke: var(--green-dark);
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.45;
+  transition:
+    opacity 0.25s ease,
+    stroke 0.25s ease,
+    stroke-width 0.25s ease;
+}
+
+.linkActive {
+  stroke: var(--orange);
+  stroke-width: 2.5;
+  opacity: 1;
+}
+
+.dot {
+  cursor: pointer;
+  outline: none;
+}
+
+.hit {
+  fill: transparent;
+}
+
+.core {
+  fill: var(--green-dark);
+  stroke: var(--green-light);
+  stroke-width: 2;
+  transition:
+    transform var(--spring-ease-duration) var(--spring-ease),
+    fill 0.2s ease;
+}
+
+.dotActive .core,
+.dot:focus-visible .core {
+  fill: var(--orange);
+  transform: scale(1.7);
+}
+
+.hub .core {
+  fill: var(--orange);
+}
+
+.pulse {
+  fill: var(--orange);
+  opacity: 0.35;
+  animation: pulse 2s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.tooltip {
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  color: var(--white);
+  background: var(--ink);
+  translate: -50% calc(-100% - 1.4rem);
+  animation: tipIn 0.25s var(--ease-out-expo);
+}
+
+.tooltip b {
+  font-size: 1.5rem;
+}
+
+.tooltip span {
+  opacity: 0.7;
+}
+
+@keyframes tipIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .wrap {
+    grid-template-columns: 5fr 7fr;
+    gap: 8rem;
+  }
+
+  .map {
+    padding: 3.2rem;
+  }
+
+  .count {
+    font-size: 14rem;
+  }
+}

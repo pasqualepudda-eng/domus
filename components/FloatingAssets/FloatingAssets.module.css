@@ -1,0 +1,128 @@
+.floatingAssets {
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  overflow: visible;
+}
+
+.asset {
+  will-change: transform;
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+}
+
+.inner,
+.inner svg {
+  width: 100%;
+  height: 100%;
+}
+
+.asset:nth-child(1) {
+  top: 0.5rem;
+  left: 47.4%;
+}
+
+.asset:nth-child(2) {
+  bottom: 15%;
+  left: 3%;
+}
+
+.asset:nth-child(3) {
+  top: 45%;
+  right: 3%;
+}
+
+@media screen and (min-width: 768px) {
+  .asset {
+    width: 9rem;
+    height: 9rem;
+  }
+  .asset:nth-child(1) {
+    top: 1rem;
+  }
+  .asset:nth-child(2) {
+    bottom: 18%;
+    left: 5%;
+  }
+  .asset:nth-child(3) {
+    top: 50%;
+    right: 2%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .asset {
+    width: 16rem;
+    height: 16rem;
+  }
+  .asset:nth-child(1) {
+    top: 2rem;
+  }
+}
+
+/* Inside a media panel: smaller, tucked into the corners */
+.inset .asset {
+  width: 22%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.inset .asset:nth-child(1) {
+  top: 6%;
+  left: 8%;
+}
+
+.inset .asset:nth-child(2) {
+  top: auto;
+  bottom: 8%;
+  left: auto;
+  right: 8%;
+}
+
+.inset .asset:nth-child(3) {
+  top: 12%;
+  right: 10%;
+}
+
+/* Page heroes: smaller, pushed to the sides so they never cross the copy */
+.hero .asset {
+  width: 9rem;
+  height: 9rem;
+}
+
+.hero .asset:nth-child(1) {
+  top: 0;
+  left: 3%;
+}
+
+.hero .asset:nth-child(2) {
+  top: auto;
+  bottom: 12%;
+  left: 2%;
+}
+
+.hero .asset:nth-child(3) {
+  top: 42%;
+  right: 2%;
+}
+
+@media screen and (min-width: 1025px) {
+  .hero .asset {
+    width: 11rem;
+    height: 11rem;
+  }
+}
+
+/* Phones: keep only the top decoration, smaller, so nothing sits on the copy */
+@media screen and (max-width: 767px) {
+  .default .asset:nth-child(n + 2) {
+    display: none;
+  }
+
+  .default .asset:first-child {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+}

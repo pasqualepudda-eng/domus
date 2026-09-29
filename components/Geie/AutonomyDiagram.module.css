@@ -1,0 +1,247 @@
+.scroll {
+  position: relative;
+  height: 420vh;
+  background: var(--paper);
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100svh;
+  padding-top: calc(var(--header-mobile) + 5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  height: 100%;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.copy h2 {
+  font-size: 2.8rem;
+}
+
+.steps {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+}
+
+.step > span:last-child {
+  display: none;
+}
+
+.stepIndex {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: 1.5px solid var(--gray);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stepDone .stepIndex {
+  border-color: var(--ink);
+}
+
+.stepActive .stepIndex {
+  color: var(--white);
+  border-color: var(--orange);
+  background: var(--orange);
+}
+
+.stepActive > span:last-child {
+  display: flex;
+}
+
+.step > span:last-child {
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stepText {
+  font-size: 1.5rem;
+  color: var(--gray-dark);
+}
+
+.diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.diagram svg {
+  width: auto;
+  height: 100%;
+  max-height: 60rem;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.frame {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.frameFill {
+  fill: var(--white);
+  opacity: 0;
+}
+
+.frameLabel {
+  visibility: hidden;
+}
+
+.frameLabel rect {
+  fill: var(--ink);
+}
+
+.frameLabel text {
+  fill: var(--white);
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.edge,
+.spoke {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.spoke {
+  stroke: var(--orange);
+  stroke-width: 3;
+}
+
+.particles {
+  visibility: hidden;
+}
+
+.particle {
+  fill: var(--orange);
+}
+
+.goal circle {
+  fill: var(--ink);
+}
+
+.goal text {
+  fill: var(--white);
+  font-family: var(--font-heading), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.member text {
+  fill: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.orbit {
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  animation: spin 18s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit {
+    animation: none;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .stage {
+    padding-top: 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: none;
+    align-items: center;
+    gap: 1.6rem;
+    height: auto;
+  }
+
+  .copy {
+    grid-column: 1 / span 6;
+    gap: 2.4rem;
+  }
+
+  .copy h2 {
+    font-size: 5.6rem;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-top: 2.4rem;
+  }
+
+  .step > span:last-child {
+    display: flex;
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+  }
+
+  .stepActive > span:last-child {
+    opacity: 1;
+  }
+
+  .stepText {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease-in-out);
+  }
+
+  .stepActive .stepText {
+    max-height: 8rem;
+  }
+
+  .diagram {
+    grid-column: 8 / span 9;
+    height: 80vh;
+  }
+}

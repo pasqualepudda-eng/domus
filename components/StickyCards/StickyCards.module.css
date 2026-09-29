@@ -1,0 +1,140 @@
+.section {
+  padding: 12rem 0 16rem;
+  background: var(--paper);
+}
+
+.intro {
+  margin-bottom: 6.4rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.card {
+  position: sticky;
+  top: calc(var(--header-height) + var(--i) * 1.6rem);
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.2rem;
+  min-height: 60vh;
+  padding: 3.2rem 2.4rem;
+  border-radius: 2.4rem;
+  color: var(--fg);
+  background: var(--bg);
+  /* Driven by the scroll: --in 1 → 0 while the card arrives (it stands up around its
+     bottom edge), --back 0 → 1 while the next card covers it (it tips back around its
+     top edge, shrinks and dims). Both at 0 is the flat resting card. */
+  transform:
+    perspective(1600px)
+    translateY(100%) rotateX(calc(var(--in, 0) * 16deg)) translateY(-100%)
+    rotateX(calc(var(--back, 0) * -8deg))
+    scale(calc(1 - var(--back, 0) * var(--shrink, 0)));
+  filter: brightness(calc(1 - var(--back, 0) * 0.2));
+  transform-origin: 50% 0;
+  will-change: transform, filter;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.6rem;
+}
+
+.text p {
+  max-width: 48rem;
+  opacity: 0.85;
+}
+
+.visualWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22rem;
+}
+
+.visual {
+  position: relative;
+  width: min(60vw, 36rem);
+  aspect-ratio: 1;
+}
+
+.visual span {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.v0 span:nth-child(1) {
+  inset: 10%;
+  opacity: 0.2;
+}
+.v0 span:nth-child(2) {
+  inset: 25%;
+  opacity: 0.45;
+}
+.v0 span:nth-child(3) {
+  inset: 40%;
+}
+
+.v1 span {
+  border-radius: 1.6rem;
+}
+.v1 span:nth-child(1) {
+  inset: 10% 30% 55% 10%;
+}
+.v1 span:nth-child(2) {
+  inset: 35% 15% 30% 25%;
+  opacity: 0.6;
+}
+.v1 span:nth-child(3) {
+  inset: 60% 35% 10% 20%;
+  opacity: 0.35;
+}
+
+.v2 span:nth-child(1) {
+  inset: 55% 8% 8% 8%;
+  border-radius: 10rem;
+}
+.v2 span:nth-child(2) {
+  inset: 30% 20% 30% 20%;
+  opacity: 0.6;
+}
+.v2 span:nth-child(3) {
+  inset: 8% 38% 62% 38%;
+}
+
+.v3 span:nth-child(1) {
+  inset: 15% 40% 15% 5%;
+}
+.v3 span:nth-child(2) {
+  inset: 15% 5% 15% 40%;
+  opacity: 0.55;
+}
+.v3 span:nth-child(3) {
+  inset: 42% 42% 42% 42%;
+  background: var(--bg);
+}
+
+@media screen and (min-width: 1025px) {
+  .section {
+    padding: 16rem 0 20rem;
+  }
+
+  .intro {
+    margin-bottom: 8rem;
+  }
+
+  .cardInner {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--header-height) - 12rem);
+    padding: 5.6rem;
+    border-radius: 3.2rem;
+  }
+}

@@ -1,0 +1,12 @@
+.art {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Parts moved by the scroll engine turn and scale around their own centre,
+   unless the markup gives them another origin. */
+.art [data-part] {
+  transform-box: fill-box;
+  transform-origin: center;
+}

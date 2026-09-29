@@ -1,0 +1,74 @@
+.hero {
+  position: relative;
+  background: var(--paper);
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  /* Copy always starts clear of the fixed header bar */
+  padding: calc(var(--header-height) + 5.6rem) 0 8rem;
+  color: var(--hero-fg);
+  background: var(--hero-bg);
+  clip-path: inset(0% 0% 0% 0% round 0rem);
+  will-change: clip-path;
+}
+
+/* Decorations live below the header bar and stay off the copy on phones */
+.assets {
+  position: absolute;
+  inset: calc(var(--header-height) + 2.4rem) 0 0;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .assets {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .panel {
+    padding-top: calc(var(--header-height) + 8rem);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  text-align: center;
+}
+
+.title {
+  max-width: 120rem;
+  text-transform: uppercase;
+}
+
+.title :global(i) {
+  font-style: normal;
+  color: var(--hero-accent);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 76rem;
+}
+
+.text p {
+  opacity: 0.85;
+}
+
+@media screen and (min-width: 1025px) {
+  .text p:first-child {
+    opacity: 1;
+  }
+}

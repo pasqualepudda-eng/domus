@@ -1,0 +1,136 @@
+.section {
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4.8rem;
+  padding: 10rem 0;
+}
+
+.track {
+  display: flex;
+  gap: 1.6rem;
+  /* vertical room so the 3D turn of the cards is not clipped by the scroll box */
+  margin: -2.4rem 0;
+  padding: 2.4rem var(--page-padding-x);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Layout box: measured by the scroll engine and snapped; never transformed. */
+.slot {
+  flex-shrink: 0;
+  width: 78vw;
+  border-radius: 2.4rem;
+  scroll-snap-align: center;
+}
+
+/* Visible face: turned in 3D by the scroll engine. */
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 2.4rem;
+  border: 1px solid transparent; /* keeps the edges smooth while turned in 3D */
+  border-radius: inherit;
+  color: var(--ink);
+  background: var(--bg) padding-box;
+}
+
+.index {
+  position: absolute;
+  top: 2.4rem;
+  left: 2.4rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 1.4rem;
+}
+
+.arrow {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: transform var(--spring-ease-duration) var(--spring-ease);
+}
+
+.slot:is(:hover, :focus-visible) .arrow {
+  transform: translate(0.4rem, -0.4rem) scale(1.2);
+}
+
+.art {
+  position: absolute;
+  top: 13%;
+  right: 10%;
+  left: 10%;
+  height: 36%;
+}
+
+.meta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.progress {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .slot {
+    width: 42vw;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .inner {
+    height: 100vh;
+    padding: var(--header-height) 0 4rem;
+  }
+
+  .track {
+    width: max-content;
+    overflow: visible;
+    padding: 2.4rem calc(var(--page-padding-x) + 100vw / 16);
+    gap: 2.4rem;
+  }
+
+  .slot {
+    width: 38rem;
+    border-radius: 3.2rem;
+  }
+
+  .card {
+    padding: 3.2rem;
+  }
+
+  .progress {
+    display: block;
+    height: 2px;
+    margin: 0 calc(100vw / 16);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .progress span {
+    display: block;
+    height: 100%;
+    background: var(--white);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+}

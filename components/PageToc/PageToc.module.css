@@ -1,0 +1,89 @@
+.toc {
+  position: fixed;
+  z-index: 90;
+  top: calc(var(--header-mobile) + 0.4rem);
+  left: var(--page-padding-x);
+  right: var(--page-padding-x);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.6rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1rem 3rem -1rem rgba(10, 10, 12, 0.18);
+  visibility: hidden;
+}
+
+.label {
+  display: none;
+  padding-left: 1rem;
+  color: var(--gray-mid);
+  white-space: nowrap;
+}
+
+.toc ul {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.toc ul::-webkit-scrollbar {
+  display: none;
+}
+
+.pill {
+  height: 3.6rem;
+  padding: 0 1.4rem;
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--gray-dark);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.pill:hover {
+  background: var(--gray-light);
+}
+
+.active,
+.active:hover {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.progress {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0;
+  left: 1.2rem;
+  height: 2px;
+  background: var(--gray-light);
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@media screen and (min-width: 1025px) {
+  .toc {
+    top: 2.8rem;
+    right: auto;
+    left: 50%;
+    max-width: calc(100vw - 50rem);
+    translate: -50% 0;
+  }
+
+  .label {
+    display: block;
+  }
+}

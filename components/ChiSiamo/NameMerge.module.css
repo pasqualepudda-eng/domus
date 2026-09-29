@@ -1,0 +1,110 @@
+.scroll {
+  position: relative;
+  height: 420vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height: 100svh;
+  background: var(--paper);
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+}
+
+.panelA {
+  background: var(--green-dark);
+  clip-path: inset(0% 100% 0% 0%);
+}
+
+.panelD {
+  background: var(--pink-light);
+  clip-path: inset(0% 0% 0% 100%);
+}
+
+.words {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  display: flex;
+  width: 100%;
+  translate: 0 -50%;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  font-size: 11vw;
+  line-height: 0.9;
+  visibility: hidden;
+}
+
+.wordA {
+  color: var(--green);
+}
+
+.wordD {
+  color: var(--orange);
+}
+
+.word > span {
+  display: inline-block;
+  font-weight: 800;
+}
+
+.claim {
+  position: absolute;
+  top: 52%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 50%;
+  padding: 0 var(--page-padding-x);
+  visibility: hidden;
+}
+
+.claim p {
+  opacity: 0.8;
+}
+
+.claimA {
+  left: 0;
+  color: var(--green-light);
+}
+
+.claimD {
+  right: 0;
+  color: var(--orange-dark);
+}
+
+.outro {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  width: min(90vw, 88rem);
+  translate: -50% 0;
+  color: var(--ink);
+  text-align: center;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .claim b {
+    font-size: 1.6rem;
+  }
+
+  .claim p {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .claim {
+    padding: 0 6vw;
+  }
+}
