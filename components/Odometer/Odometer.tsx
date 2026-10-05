@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { BP_DESKTOP } from "@/lib/hooks";
 import styles from "./Odometer.module.css";
 
 type Props = {
@@ -16,8 +17,9 @@ type Props = {
 };
 
 /**
- * A number whose digits roll into place like an odometer, scrubbed by scroll: the
- * lower digits spin more turns than the higher ones, symbols pop in at the end.
+ * A number whose digits roll into place like an odometer: the lower digits spin more
+ * turns than the higher ones, symbols pop in at the end. On desktop the roll is scrubbed
+ * by scroll; below desktop it plays once on entry (see the timeline below).
  * The final value is what renders without JavaScript and what assistive tech reads.
  */
 export default function Odometer({ value, from, stagger = 0, className }: Props) {
@@ -39,25 +41,34 @@ export default function Odometer({ value, from, stagger = 0, className }: Props)
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
+      mm.add({ motion: "(prefers-reduced-motion: no-preference)", desktop: BP_DESKTOP }, (ctx) => {
+        const { motion, desktop } = ctx.conditions!;
+        if (!motion) return;
         const shift = stagger * 4;
+        // Below desktop the figures sit in the lower part of the screen while the text above
+        // is read, so a scrub would leave them frozen mid-roll with half-cut digits: there the
+        // roll plays once when the number enters and rewinds when scrolled back above it.
         const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: root.current,
-            start: `top ${96 - shift}%`,
-            end: `top ${68 - shift}%`,
-            scrub: 0.6,
-          },
+          delay: desktop ? 0 : stagger * 0.12,
+          scrollTrigger: desktop
+            ? { trigger: root.current, start: `top ${96 - shift}%`, end: `top ${68 - shift}%`, scrub: 0.6 }
+            : { trigger: root.current, start: "top 85%", toggleActions: "play none none reverse" },
         });
         gsap.utils.toArray<HTMLElement>(`.${styles.strip}`).forEach((strip, i) => {
           const end = (-100 * Number(strip.dataset.steps)) / strip.children.length;
           // The strip renders at its final offset; start it from the top.
-          tl.fromTo(strip, { y: 0, yPercent: 0 }, { yPercent: end, duration: 1, ease: "power2.inOut" }, i * 0.08);
+          tl.fromTo(
+            strip,
+            { y: 0, yPercent: 0 },
+            { yPercent: end, duration: 1, ease: desktop ? "power2.inOut" : "power3.out" },
+            i * 0.08,
+          );
         });
         const symbols = gsap.utils.toArray<HTMLElement>(`.${styles.sym}`);
         if (symbols.length) {
           tl.fromTo(symbols, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, ">-0.2");
         }
+        if (!desktop) tl.duration(1.6);
       });
     },
     { scope: root },

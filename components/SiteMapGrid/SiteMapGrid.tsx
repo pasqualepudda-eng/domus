@@ -43,12 +43,12 @@ function PageCard({ children, bg }: { children: React.ReactNode; bg: string }) {
 }
 
 const COLORS = [
-  "var(--green)",
+  "var(--azure)",
   "var(--orange)",
   "var(--purple-light)",
   "var(--blue-light)",
   "var(--pink-light)",
-  "var(--green-light)",
+  "var(--azure-light)",
   "var(--gray-light)",
 ];
 

@@ -34,7 +34,7 @@ Dopo ogni modifica lancia `npm run build`, poi clicca "Go Live".
 
 ## Testi legali, cookie e SEO
 
-- **Testi legali** → `lib/legal.ts`. Le parti tra `[[doppie parentesi]]` sono dati mancanti: sul sito appaiono evidenziate in arancio. Vanno completate e il testo va fatto verificare da un legale prima della pubblicazione.
+- **Testi legali** → `lib/legal.ts`. Le diciture “Cookie policy” e “pagina Contatti” diventano link interni.
 - **Banner cookie** → `components/CookieConsent`. Le scelte sono salvate in `localStorage` (`arka-consent`) per 6 mesi. Per caricare script solo con consenso: `<ConsentGate category="statistiche">…</ConsentGate>`. Se cambi i cookie usati, incrementa `CONSENT_VERSION` in `lib/consent.ts` e aggiorna la cookie policy.
 - **Dominio** per sitemap, robots e Open Graph → `SITE_URL` in `lib/site.ts` (o variabile `NEXT_PUBLIC_SITE_URL`).
 - `sitemap.xml` e `robots.txt` sono generati a ogni build dalle pagine in `lib/site.ts`.

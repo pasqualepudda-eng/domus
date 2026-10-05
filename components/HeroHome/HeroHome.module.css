@@ -1,6 +1,6 @@
 .scrollContainer {
-  --hero-dark: var(--green-dark);
-  --hero-light: var(--green-light);
+  --hero-dark: var(--azure-dark);
+  --hero-light: var(--azure-light);
   height: 700lvh;
 }
 
@@ -71,7 +71,7 @@
   left: 30%;
   width: 45vmax;
   height: 45vmax;
-  background: var(--green);
+  background: var(--azure);
   animation: drift3 11s ease-in-out infinite alternate;
 }
 

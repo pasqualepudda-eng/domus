@@ -32,11 +32,11 @@ type Field = {
 };
 
 const FIELDS: Field[] = [
-  { key: "nome", type: "text", label: "Nome e cognome", question: "Iniziamo: come ti chiami?", required: true, bg: "var(--green)" },
+  { key: "nome", type: "text", label: "Nome e cognome", question: "Iniziamo: come ti chiami?", required: true, bg: "var(--azure)" },
   { key: "tipologia", type: "choice", label: "Tipologia di soggetto", question: "Piacere, {nome}! Che tipo di soggetto rappresenti?", required: true, bg: "var(--orange)" },
   { key: "societa", type: "text", label: "Società o organizzazione", question: "Qual è la tua società o organizzazione?", help: "Facoltativo", required: false, bg: "var(--purple)" },
   { key: "paese", type: "country", label: "Paese", question: "In quale Paese operi?", help: "Inizia a scrivere e scegli dall’elenco, oppure inserisci un altro Paese.", required: true, bg: "var(--blue)" },
-  { key: "email", type: "email", label: "Email", question: "Qual è la tua email?", help: "Ti ricontatteremo a questo indirizzo.", required: true, bg: "var(--green)" },
+  { key: "email", type: "email", label: "Email", question: "Qual è la tua email?", help: "Ti ricontatteremo a questo indirizzo.", required: true, bg: "var(--azure)" },
   { key: "telefono", type: "tel", label: "Telefono", question: "Vuoi lasciarci anche un numero di telefono?", help: "Facoltativo", required: false, bg: "var(--orange)" },
   { key: "progetto", type: "textarea", label: "Il tuo progetto", question: "Raccontaci il tuo progetto.", help: "Chi sei, cosa fai e quali obiettivi vuoi raggiungere. Shift ⇧ + Invio ↵ per andare a capo.", required: true, bg: "var(--purple)" },
   { key: "consenso", type: "consent", label: "Consenso", question: "Un’ultima cosa.", required: true, bg: "var(--blue)" },
@@ -222,7 +222,7 @@ export default function ContactForm() {
   }, []);
 
   const progress = step < 0 ? 0 : Math.min(1, step / n);
-  const accent = field?.bg ?? "var(--green)";
+  const accent = field?.bg ?? "var(--azure)";
   const question = field?.question.replace("{nome}", firstName || "piacere di conoscerti") ?? "";
 
   return (

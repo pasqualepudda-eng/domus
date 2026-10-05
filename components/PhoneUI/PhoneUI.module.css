@@ -69,8 +69,8 @@
   border-radius: 50%;
   font-size: 4cqw;
   font-weight: 600;
-  color: var(--green-dark);
-  background: var(--green-light);
+  color: var(--azure-dark);
+  background: var(--azure-light);
 }
 
 .pillSmall {
@@ -105,7 +105,7 @@
 }
 
 .up {
-  color: var(--green);
+  color: var(--azure);
 }
 
 .down {
@@ -144,8 +144,8 @@
 }
 
 .action:first-child i {
-  color: var(--green-dark);
-  background: var(--green);
+  color: var(--azure-dark);
+  background: var(--azure);
   box-shadow: none;
 }
 
@@ -205,7 +205,7 @@
 }
 
 .value small.up {
-  color: var(--green);
+  color: var(--azure);
 }
 
 .value small.down {

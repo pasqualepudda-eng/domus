@@ -58,9 +58,9 @@
 }
 
 .light {
-  --button-bg: var(--green-light);
+  --button-bg: var(--azure-light);
   --button-bg-hover: var(--white);
-  --button-text: var(--green-dark);
+  --button-text: var(--azure-dark);
 }
 
 .tertiary {

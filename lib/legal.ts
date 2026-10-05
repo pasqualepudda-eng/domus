@@ -1,9 +1,5 @@
 /**
- * Legal texts.
- *
- * Text inside [[double brackets]] is a placeholder: it is rendered highlighted
- * on the page and MUST be completed (and the whole text reviewed by a legal
- * professional) before going live.
+ * Legal texts. "Cookie policy" and "pagina Contatti" become internal links on the page.
  */
 
 export type LegalBlock = string | { list: string[] };
@@ -32,11 +28,8 @@ export const termini: LegalDoc = {
         `Il sito è gestito da ${TITOLARE}.`,
         {
           list: [
-            "Sede legale: [[indirizzo completo della sede in Bulgaria]]",
-            "Numero di registrazione (UIC/EIK): [[numero di registrazione]]",
-            "Partita IVA: [[partita IVA, se presente]]",
-            "Email: [[indirizzo email di contatto]]",
-            "PEC / telefono: [[facoltativo]]",
+            "Sede legale: Sofia, Bulgaria",
+            "Contatti: tramite la pagina Contatti",
           ],
         },
       ],
@@ -78,7 +71,7 @@ export const termini: LegalDoc = {
       title: "Richieste di contatto",
       body: [
         "L’invio di una richiesta tramite il modulo di contatto non comporta l’instaurazione di alcun rapporto contrattuale né l’obbligo, per ARKADOMUS GEIE, di accettare la partecipazione del richiedente.",
-        "Ti impegni a fornire informazioni veritiere e aggiornate. I dati personali inviati sono trattati secondo l’informativa privacy: [[link all’informativa privacy]].",
+        "Ti impegni a fornire informazioni veritiere e aggiornate. I dati personali inviati sono trattati nel rispetto del Regolamento (UE) 2016/679 (GDPR) per gestire la tua richiesta.",
       ],
     },
     {
@@ -108,7 +101,7 @@ export const termini: LegalDoc = {
       id: "privacy",
       title: "Privacy e cookie",
       body: [
-        "Il trattamento dei dati personali è descritto nell’informativa privacy: [[link all’informativa privacy]].",
+        "Il trattamento dei dati personali avviene nel rispetto del Regolamento (UE) 2016/679 (GDPR). Per informazioni o per esercitare i tuoi diritti puoi scriverci tramite la pagina Contatti.",
         "L’uso dei cookie e degli strumenti analoghi è descritto nella Cookie policy, dalla quale puoi anche modificare in ogni momento le tue preferenze.",
       ],
     },
@@ -123,13 +116,13 @@ export const termini: LegalDoc = {
       id: "legge",
       title: "Legge applicabile e foro competente",
       body: [
-        "I presenti Termini sono regolati dalla legge [[legge applicabile, es. bulgara]]. Per ogni controversia è competente il foro di [[foro competente]], fatte salve le norme inderogabili a tutela dei consumatori, che prevedono la competenza del giudice del luogo di residenza del consumatore.",
+        "I presenti Termini sono regolati dalla legge bulgara. Per ogni controversia è competente il foro di Sofia, fatte salve le norme inderogabili a tutela dei consumatori, che prevedono la competenza del giudice del luogo di residenza del consumatore.",
       ],
     },
     {
       id: "contatti",
       title: "Contatti",
-      body: ["Per qualsiasi domanda sui presenti Termini puoi scriverci a [[indirizzo email di contatto]] o utilizzare la pagina Contatti."],
+      body: ["Per qualsiasi domanda sui presenti Termini puoi scriverci tramite la pagina Contatti."],
     },
   ],
 };
@@ -188,8 +181,8 @@ export const cookiePolicy: LegalDoc = {
       id: "titolare",
       title: "Titolare del trattamento",
       body: [
-        `${TITOLARE}. Sede legale: [[indirizzo completo]]. Email: [[indirizzo email di contatto]].`,
-        "Per maggiori informazioni sul trattamento dei dati personali consulta l’informativa privacy: [[link all’informativa privacy]].",
+        `${TITOLARE}. Sede legale: Sofia, Bulgaria.`,
+        "Il trattamento dei dati personali avviene nel rispetto del Regolamento (UE) 2016/679 (GDPR). Per informazioni o per esercitare i tuoi diritti puoi scriverci tramite la pagina Contatti.",
       ],
     },
   ],

@@ -23,14 +23,16 @@
   visibility: hidden;
 }
 
+/* Centered by layout, not by a translate: GSAP folds a CSS translate into its own transform,
+   sometimes as fixed pixels that go stale when the font loads or the root size changes. */
 .strip {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  translate: -50% 0;
 }
 
 .strip > span,

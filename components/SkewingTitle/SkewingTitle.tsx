@@ -111,7 +111,7 @@ export default function SkewingTitle({ id, title, text, cta }: Props) {
         <FloatingAssets
           assets={[
             { color: "var(--orange)", shape: "coin" },
-            { color: "var(--green)", shape: "pill" },
+            { color: "var(--azure)", shape: "pill" },
             { color: "var(--purple)", shape: "star" },
           ]}
         />

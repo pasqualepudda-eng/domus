@@ -72,7 +72,7 @@
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 1.4rem;
-  background: var(--green-light);
+  background: var(--azure-light);
   animation: wobble 2.8s var(--ease-in-out) 1.4s infinite;
 }
 
@@ -158,8 +158,8 @@
   font-size: 1.1rem;
   font-style: normal;
   font-weight: 600;
-  color: var(--green-dark);
-  background: var(--green-light);
+  color: var(--azure-dark);
+  background: var(--azure-light);
 }
 
 .category p {
@@ -204,7 +204,7 @@
 }
 
 .toggleOn:disabled {
-  background: var(--green-dark);
+  background: var(--azure-dark);
 }
 
 /* Actions: reject and accept carry equal weight */

@@ -135,7 +135,7 @@ export default function HeroHome() {
           { autoAlpha: 1, scale: 1, duration: 0.1, ease: "power3.inOut" },
           headingAt,
         )
-        .fromTo(root.current, { "--logo-color": "#cce7ff" }, { "--logo-color": "#013330", duration: 0.1, ease: "none" }, 0.4);
+        .fromTo(root.current, { "--logo-color": "#cce7ff" }, { "--logo-color": "#04294a", duration: 0.1, ease: "none" }, 0.4);
 
       // Drive the pixel heading's own timeline from the scroll.
       tl.fromTo(

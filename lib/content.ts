@@ -59,7 +59,7 @@ export const bentos: Bento[] = [
     title: "Sede in Bulgaria, nel cuore dell’Unione Europea",
     hover: "ARKADOMUS GEIE nasce in Bulgaria per consentire di collaborare all’interno dell’Unione Europea.",
     bg: "var(--white)",
-    fg: "var(--green-dark)",
+    fg: "var(--azure-dark)",
     shape: "shield",
   },
   {
@@ -82,8 +82,8 @@ export const bentos: Bento[] = [
     id: "insieme",
     title: "Insieme, le sfide diventano opportunità",
     hover: "Una rete per fare impresa con maggiore forza, consapevolezza e prospettiva.",
-    bg: "var(--green)",
-    fg: "var(--green-dark)",
+    bg: "var(--azure)",
+    fg: "var(--azure-dark)",
     shape: "bubble",
   },
 ];
@@ -105,8 +105,8 @@ export const stickyCards = [
     eyebrow: "01 — Struttura",
     title: "Una struttura, non un accordo",
     text: "Il GEIE dà forma alla collaborazione: ogni membro resta autonomo, ma lavora dentro una struttura europea comune.",
-    bg: "var(--green-dark)",
-    fg: "var(--green-light)",
+    bg: "var(--azure-dark)",
+    fg: "var(--azure-light)",
   },
   {
     eyebrow: "02 — Cooperazione",
@@ -133,8 +133,8 @@ export const stickyCards = [
     eyebrow: "05 — Visibilità",
     title: "Visibilità e influenza",
     text: "La partecipazione ad ARKADOMUS rafforza il posizionamento dei membri e può contribuire a dare maggiore visibilità alle loro attività in contesti europei e internazionali.",
-    bg: "var(--green)",
-    fg: "var(--green-dark)",
+    bg: "var(--azure)",
+    fg: "var(--azure-dark)",
   },
 ];
 
@@ -210,10 +210,10 @@ export const services = {
   items: [
     { tag: "Cooperazione cross-border", title: "Le distanze non devono più essere un limite.", color: "var(--blue-light)", accent: "var(--blue)", art: "crossborder" as const },
     { tag: "Protezione degli asset", title: "Proteggere il valore costruito è parte della strategia.", color: "var(--orange-light)", accent: "var(--orange)", art: "protezione" as const },
-    { tag: "Efficienza fiscale e gestionale", title: "Operare meglio significa anche organizzare meglio.", color: "var(--green-light)", accent: "var(--green)", art: "efficienza" as const },
+    { tag: "Efficienza fiscale e gestionale", title: "Operare meglio significa anche organizzare meglio.", color: "var(--azure-light)", accent: "var(--azure)", art: "efficienza" as const },
     { tag: "Visibilità europea", title: "La tua attività merita di essere vista.", color: "var(--purple-light)", accent: "var(--purple)", art: "visibilita" as const },
     { tag: "Influenza positiva", title: "La reputazione si costruisce attraverso le relazioni.", color: "var(--pink-light)", accent: "var(--orange)", art: "influenza" as const },
-    { tag: "Responsabilità corporativa e sociale", title: "Appartenere significa contribuire.", color: "var(--gray-light)", accent: "var(--green)", art: "responsabilita" as const },
+    { tag: "Responsabilità corporativa e sociale", title: "Appartenere significa contribuire.", color: "var(--gray-light)", accent: "var(--azure)", art: "responsabilita" as const },
   ],
 };
 
@@ -578,8 +578,8 @@ export const bigMenu: BigMenuItem[] = [
     label: "Home",
     href: "/",
     description: "La tua impresa, più forte oltre i confini.",
-    bg: "var(--green)",
-    fg: "var(--green-dark)",
+    bg: "var(--azure)",
+    fg: "var(--azure-dark)",
     links: [
       { label: "Perché insieme", href: "/#perche" },
       { label: "I quattro pilastri", href: "/#pilastri" },

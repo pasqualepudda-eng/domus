@@ -6,12 +6,12 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import styles from "./ValuesGrid.module.css";
 
 const COLORS = [
-  ["var(--green)", "var(--green-dark)"],
+  ["var(--azure)", "var(--azure-dark)"],
   ["var(--orange)", "var(--orange-dark)"],
   ["var(--purple-light)", "var(--purple-dark)"],
   ["var(--blue-light)", "var(--ink)"],
   ["var(--pink-light)", "var(--orange-dark)"],
-  ["var(--green-light)", "var(--green-dark)"],
+  ["var(--azure-light)", "var(--azure-dark)"],
 ];
 
 function Glyph({ i }: { i: number }) {

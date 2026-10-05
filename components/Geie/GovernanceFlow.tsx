@@ -6,7 +6,7 @@ import { geie } from "@/lib/content";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import styles from "./GovernanceFlow.module.css";
 
-const COLORS = ["var(--blue)", "var(--orange)", "var(--purple)", "var(--green)"];
+const COLORS = ["var(--blue)", "var(--orange)", "var(--purple)", "var(--azure)"];
 
 /**
  * Vertical chain of the Group's bodies. Steps swing in as they scroll up, the

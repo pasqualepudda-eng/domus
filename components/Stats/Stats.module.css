@@ -1,7 +1,7 @@
 .section {
   padding: 10rem 0;
-  color: var(--green-light);
-  background: var(--green-dark);
+  color: var(--azure-light);
+  background: var(--azure-dark);
 }
 
 .intro {
@@ -36,7 +36,7 @@
   font-size: 9.6rem;
   line-height: 0.9;
   white-space: nowrap;
-  color: var(--green);
+  color: var(--azure);
   font-variant-numeric: tabular-nums;
 }
 

@@ -10,8 +10,8 @@
   justify-content: center;
   min-height: 100vh;
   padding: 12rem var(--page-padding-x);
-  color: var(--green-light);
-  background: var(--green-dark);
+  color: var(--azure-light);
+  background: var(--azure-dark);
 }
 
 .content {

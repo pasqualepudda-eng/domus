@@ -16,7 +16,7 @@ const heading = Geist({ subsets: ["latin"], variable: "--font-heading", display:
 export const metadata: Metadata = { metadataBase: new URL(SITE_URL), ...pageMeta(seo.home) };
 
 export const viewport: Viewport = {
-  themeColor: "#013330",
+  themeColor: "#04294a",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

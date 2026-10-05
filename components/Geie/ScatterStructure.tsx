@@ -9,7 +9,7 @@ import styles from "./ScatterStructure.module.css";
 const W = 640;
 const H = 420;
 const N = 16;
-const COLORS = ["#ff5c16", "#d075ff", "#89b0ff", "#baf24a"];
+const COLORS = ["#ff5c16", "#d075ff", "#89b0ff", "#3fc3ff"];
 
 /** Deterministic pseudo-random so server and client render the same layout. */
 function rand(seed: number) {

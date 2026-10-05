@@ -39,8 +39,8 @@
 }
 
 .on i {
-  background: var(--green);
-  box-shadow: 0 0 0 2px var(--green-dark);
+  background: var(--azure);
+  box-shadow: 0 0 0 2px var(--azure-dark);
 }
 
 .button {

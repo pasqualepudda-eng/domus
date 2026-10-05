@@ -28,15 +28,15 @@
   --orange-light: #ffa680;
   --orange: #ff5c16;
   --orange-dark: #661800;
-  --green-light: #e5ffc3;
-  --green: #baf24a;
-  --green-dark: #013330;
+  --azure-light: #d6f3ff;
+  --azure: #3fc3ff;
+  --azure-dark: #04294a;
   --purple-light: #eac2ff;
   --purple: #d075ff;
   --purple-dark: #3d065f;
   --pink-light: #fff1eb;
 
-  --value-increase: #457a39;
+  --value-increase: #0a74b8;
   --value-decrease: #e50000;
 
   --site-container-max-width: 1920px;

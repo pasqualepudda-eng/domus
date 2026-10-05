@@ -29,7 +29,7 @@ function TabBar({ active }: { active: number }) {
   );
 }
 
-const DOT_COLORS = ["var(--orange)", "var(--blue)", "var(--purple)", "var(--green)", "var(--gray-mid)"];
+const DOT_COLORS = ["var(--orange)", "var(--blue)", "var(--purple)", "var(--azure)", "var(--gray-mid)"];
 
 export default function PhoneUI({ screen = "home" }: { screen?: "home" | "activity" }) {
   const { home, detail } = phone;
@@ -80,12 +80,12 @@ export default function PhoneUI({ screen = "home" }: { screen?: "home" | "activi
           <svg className={styles.chart} viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="phone-chart" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stopColor="#baf24a" stopOpacity="0.45" />
-                <stop offset="1" stopColor="#baf24a" stopOpacity="0" />
+                <stop offset="0" stopColor="#3fc3ff" stopOpacity="0.45" />
+                <stop offset="1" stopColor="#3fc3ff" stopOpacity="0" />
               </linearGradient>
             </defs>
             <path d="M0 90 C40 85 60 70 90 66 S150 50 180 38 S250 20 300 10 V110 H0 Z" fill="url(#phone-chart)" />
-            <path d="M0 90 C40 85 60 70 90 66 S150 50 180 38 S250 20 300 10" fill="none" stroke="#baf24a" strokeWidth="3" />
+            <path d="M0 90 C40 85 60 70 90 66 S150 50 180 38 S250 20 300 10" fill="none" stroke="#3fc3ff" strokeWidth="3" />
           </svg>
           <div className={styles.listTitle}>{detail.listTitle}</div>
           <ul className={styles.list}>

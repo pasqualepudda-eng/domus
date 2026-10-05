@@ -7,7 +7,7 @@ import { geie } from "@/lib/content";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import styles from "./AutonomyDiagram.module.css";
 
-const COLORS = ["#ff5c16", "#d075ff", "#89b0ff", "#baf24a"];
+const COLORS = ["#ff5c16", "#d075ff", "#89b0ff", "#3fc3ff"];
 const SCATTERED = [
   [120, 120],
   [480, 130],

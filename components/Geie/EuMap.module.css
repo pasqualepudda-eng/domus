@@ -45,7 +45,7 @@
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background: var(--green-dark);
+  background: var(--azure-dark);
 }
 
 .legend .legendHub {
@@ -59,7 +59,7 @@
   position: relative;
   padding: 1.6rem;
   border-radius: 3.2rem;
-  background: var(--green-light);
+  background: var(--azure-light);
 }
 
 .map svg {
@@ -69,12 +69,12 @@
 }
 
 .gridDot {
-  fill: rgba(1, 51, 48, 0.12);
+  fill: rgba(4, 41, 74, 0.12);
 }
 
 .link {
   fill: none;
-  stroke: var(--green-dark);
+  stroke: var(--azure-dark);
   stroke-width: 1.2;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -101,8 +101,8 @@
 }
 
 .core {
-  fill: var(--green-dark);
-  stroke: var(--green-light);
+  fill: var(--azure-dark);
+  stroke: var(--azure-light);
   stroke-width: 2;
   transition:
     transform var(--spring-ease-duration) var(--spring-ease),

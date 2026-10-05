@@ -13,27 +13,19 @@ const LINKS: [string, string][] = [
   ["pagina Contatti", "/contatti"],
 ];
 
-/** [[placeholder]] → highlighted mark; known page names → internal links. */
+const LINK_PATTERN = new RegExp(`(${LINKS.map(([t]) => t).join("|")})`, "g");
+
+/** Known page names → internal links. */
 function rich(text: string): ReactNode[] {
-  return text.split(/(\[\[[^\]]+\]\])/g).flatMap((part, i) => {
-    if (part.startsWith("[[")) {
-      return [
-        <mark key={i} className={styles.todo} title="Da completare prima della pubblicazione">
-          {part.slice(2, -2)}
-        </mark>,
-      ];
-    }
-    const pattern = new RegExp(`(${LINKS.map(([t]) => t).join("|")})`, "g");
-    return part.split(pattern).map((chunk, j) => {
-      const link = LINKS.find(([t]) => t === chunk);
-      return link ? (
-        <Link key={`${i}-${j}`} href={link[1]}>
-          {chunk}
-        </Link>
-      ) : (
-        <Fragment key={`${i}-${j}`}>{chunk}</Fragment>
-      );
-    });
+  return text.split(LINK_PATTERN).map((chunk, i) => {
+    const link = LINKS.find(([t]) => t === chunk);
+    return link ? (
+      <Link key={i} href={link[1]}>
+        {chunk}
+      </Link>
+    ) : (
+      <Fragment key={i}>{chunk}</Fragment>
+    );
   });
 }
 
@@ -59,7 +51,6 @@ export default function LegalPage({
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const lenis = useLenis();
-  const hasTodo = JSON.stringify(doc).includes("[[");
 
   useGSAP(
     () => {
@@ -122,12 +113,6 @@ export default function LegalPage({
         </nav>
 
         <div className={styles.content}>
-          {hasTodo && (
-            <p className={styles.notice} role="note">
-              <b>Bozza.</b> Le parti <mark className={styles.todo}>evidenziate</mark> vanno completate e l’intero testo
-              va verificato da un consulente legale prima della pubblicazione.
-            </p>
-          )}
           <p className={clsx("type-paragraph-l", styles.intro)}>{rich(doc.intro)}</p>
 
           {doc.sections.map((s, i) => (

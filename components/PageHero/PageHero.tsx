@@ -24,9 +24,9 @@ export default function PageHero({
   eyebrow,
   title,
   text,
-  bg = "var(--green-dark)",
-  fg = "var(--green-light)",
-  accent = "var(--green)",
+  bg = "var(--azure-dark)",
+  fg = "var(--azure-light)",
+  accent = "var(--azure)",
 }: Props) {
   const root = useRef<HTMLElement>(null);
   const panel = useRef<HTMLDivElement>(null);

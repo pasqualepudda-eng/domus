@@ -42,7 +42,7 @@ export default function CallToAction({ id, cta = homeCta }: { id?: string; cta?:
           assets={[
             { color: "var(--orange)", shape: "star" },
             { color: "var(--purple)", shape: "coin" },
-            { color: "var(--green)", shape: "card" },
+            { color: "var(--azure)", shape: "card" },
           ]}
         />
         <div className={styles.content}>
